@@ -30,14 +30,15 @@ app.get('', (req, res) => {
 app.get('/about', (req, res) => {
     res.render('about', {
         title: 'About',
-        description: 'Hi! I\'m Kartikey Singh!'
+        description: 'Hi! I\'m Kartikey Singh and this is a small application I made. ' + 
+        'It uses APIs from MapBox and DarkSky to fetch forecast for the location you enter!'
     })
 })
 
 app.get('/help', (req, res) => {
     res.render('help', {
         title: 'Help',
-        description: 'Need help? Call me @9811398375'
+        description: 'Need help? Mail me at krtksingh31@gmail.com'
     })
 })
 
@@ -54,12 +55,12 @@ app.get('/weather', (req, res) => {
     geocode(req.query.address, (error, {latitude, longitude , location } = {}) => {
         if (error)
             return res.send({ error });
-        forecast(latitude, longitude, (error, { summary, temperature, precipProbability } = {}) => {
+        forecast(latitude, longitude, (error, { summary, temperature, minTemperature, maxTemperature } = {}) => {
             if (error)
                 return res.send({ error });
 
             res.send({
-                location, summary, temperature
+                location, summary, temperature, minTemperature, maxTemperature
             })
         })
     })
