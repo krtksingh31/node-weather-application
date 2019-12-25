@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <link rel="icon" href="/img/weather-colored.png">    
+    {{>header}}
+</head>
+
+<body>
+    <div class="main-content">
+        <p>{{description}}</p>
+        <form>
+            <input placeholder="Enter location" />
+            <button type="submit">Get forecast</button>
+        </form>
+
+        <p id="forecast-output-1"></p>
+        <p id="forecast-output-2"></p>
+    </div>
+
+    {{>footer}}
+    <script src='/js/app.js'></script>
+</body>
+
+</html>
